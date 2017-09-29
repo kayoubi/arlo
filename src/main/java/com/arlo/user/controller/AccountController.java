@@ -21,7 +21,7 @@ public class AccountController {
 
     @GetMapping("/accounts")
     public List<Account> getALL() {
-        return accountService.findAll().stream().peek(a -> a.password = "***").collect(Collectors.toList());
+        return accountService.findAll().stream().peek(a -> a.password = "******").collect(Collectors.toList());
     }
 
     @PostMapping("/accounts")

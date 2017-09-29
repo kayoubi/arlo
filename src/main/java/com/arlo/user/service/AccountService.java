@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.Security;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,7 +33,6 @@ public class AccountService {
     }
 
     public List<Account> findAll() {
-        Arrays.stream(Security.getProviders()).forEach(System.out::println);
         return accountRepository.findAll();
     }
 

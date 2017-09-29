@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8787
 
 management:
   security:
     enabled: false
 
-#spring:
-#  data:
-#    mongodb:
-#      uri: 'mongodb://localhost/test
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/arlo

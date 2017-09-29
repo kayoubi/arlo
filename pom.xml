@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.arlo</groupId>
-	<artifactId>user</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>arlo</artifactId>
+	<version>0.1</version>
 	<packaging>jar</packaging>
 
-	<name>user</name>
-	<description>Demo project for Spring Boot</description>
+	<name>arlo</name>
+	<description>Demo project for Account creation / login</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
