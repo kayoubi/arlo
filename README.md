@@ -12,4 +12,6 @@ docker run -d --name=arlo-spring-mongo -v `pwd`/mongo-data:/data/db -p 127.0.0.1
 mvn clean install
 
 java -jar ./target/arlo-0.1.jar
+
+http://localhost:8787/accounts
 ```

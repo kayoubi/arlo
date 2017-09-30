@@ -14,14 +14,14 @@ public class AccountApplication {
     @Autowired
     private AccountService accountService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(AccountApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AccountApplication.class, args);
+    }
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-	    return args -> {
-	        accountService.deleteAll();
+        return args -> {
+            accountService.deleteAll();
             accountService.create(new Account("kayoubi", "letme1n", "Khaled", "Ayoubi"));
         };
     }

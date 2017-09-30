@@ -1,8 +1,8 @@
 package com.arlo.user.controller;
 
 import com.arlo.user.domain.Account;
+import com.arlo.user.model.LoginResult;
 import com.arlo.user.service.AccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +16,11 @@ import java.util.stream.Collectors;
  */
 @RestController
 public class AccountController {
-    @Autowired
-    private AccountService accountService;
+    private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @GetMapping("/accounts")
     public List<Account> getALL() {
@@ -29,8 +32,8 @@ public class AccountController {
         return accountService.create(account).id;
     }
 
-    @PostMapping("/login")
-    public Object login(@RequestBody Account account) {
-        return accountService.login(account.username, account.password);
+    @PostMapping("/login2")
+    public LoginResult login(@RequestBody Account account) {
+        return new LoginResult(accountService.login(account.username, account.password));
     }
 }
