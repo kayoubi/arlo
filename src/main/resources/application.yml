@@ -1,5 +1,6 @@
 server:
   port: 8787
+  context-path: /arlo
 
 management:
   security:
@@ -9,3 +10,11 @@ spring:
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017/arlo
+
+---
+
+spring:
+  profiles: docker
+  data:
+    mongodb:
+      uri: mongodb://arlo-mongo:27017/arlo
