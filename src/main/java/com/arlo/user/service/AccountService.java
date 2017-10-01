@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
+import static org.springframework.util.StringUtils.isEmpty;
+
 /**
  * @author khaled
  */
@@ -25,8 +27,11 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account create(Account account) {
+        if (isEmpty(account.username) || isEmpty(account.password)) {
+            throw new IllegalArgumentException("user/password are required");
+        }
         if (accountRepository.findByUsername(account.username) != null) {
-            throw new RuntimeException("user already exist");
+            throw new IllegalArgumentException("user already exist");
         }
         account.password = encoder.encode(account.password);
         return accountRepository.save(account);
@@ -53,5 +58,19 @@ public class AccountService implements UserDetailsService {
             return new User(username, account.password, Collections.emptyList());
         }
         throw new UsernameNotFoundException(username);
+    }
+
+    public Account find(String id) {
+        Account account = accountRepository.findOne(id);
+        if (account == null) {
+            account = accountRepository.findByUsername(id);
+        }
+        if (account == null) {
+            throw new EntityNotFoundException();
+        }
+        return account;
+    }
+
+    public class EntityNotFoundException extends RuntimeException {
     }
 }

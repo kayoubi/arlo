@@ -22,7 +22,7 @@ public class AccountApplication {
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
             accountService.deleteAll();
-            accountService.create(new Account("kayoubi", "letme1n", "Khaled", "Ayoubi"));
+            accountService.create(new Account("arlo", "arlo-admin", "Khaled", "Ayoubi"));
         };
     }
 }
